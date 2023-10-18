@@ -185,6 +185,9 @@ class MapLocationPicker extends StatefulWidget {
   /// hide bottom card (default: false)
   final bool hideBottomCard;
 
+  /// initial zoom level
+  final double initialZoom;
+
   const MapLocationPicker({
     Key? key,
     this.desiredAccuracy = LocationAccuracy.high,
@@ -250,6 +253,7 @@ class MapLocationPicker extends StatefulWidget {
     this.hideMapTypeButton = false,
     this.hideBottomCard = false,
     this.onDecodeAddress,
+    this.initialZoom = 18.0,
   }) : super(key: key);
 
   @override
@@ -270,7 +274,7 @@ class _MapLocationPickerState extends State<MapLocationPicker> {
   late MapType _mapType = MapType.normal;
 
   /// initial zoom level
-  late double _zoom = 18.0;
+  late double _zoom = widget.initialZoom;
 
   /// GeoCoding result for further use
   GeocodingResult? _geocodingResult;
